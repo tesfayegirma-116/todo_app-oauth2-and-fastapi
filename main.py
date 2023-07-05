@@ -1,7 +1,12 @@
-import os
 from fastapi import FastAPI
-import motor.motor_asyncio
 
 app = FastAPI()
-client = motor.motor_asyncio.AsyncIOMotorClient(os.environ["MONGODB_URL"])
-db = client.todo
+
+
+@app.get("/")
+async def root():
+    return {
+        "status": "200",
+        "message": "This is a test API",
+        "documentation": "/docs"
+    }
